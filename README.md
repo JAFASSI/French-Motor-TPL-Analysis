@@ -27,13 +27,18 @@ Pour garantir la robustesse du modèle, plusieurs étapes de préparation métie
 > **Visualisation du Pipeline :**
 
 > ![Pipeline Dataiku](images/Flow_Dataiku.png)
+*Légende : Flow Dataiku.*
+---
 > ![Boxplot_before_capping](images/Boxplot_before_capping.png)
+*Légende : Boxplot avant le capping.*
+---
 > ![Boxplot_after_capping](images/Boxplot_after_capping.png)
-> 
+*Légende : Boxplot après le capping.*
+---
 Voici un aperçu des transformations actuarielles appliquées :
-
+---
 > ![Detail_Prepare_Steps](images/Detail_Prepare_Steps.png)  
-*Légende : Imputation des zéros, calcul de la Prime Pure et logique de Capping au 99ème percentile.*
+*Légende : Imputation des zéros, calcul de la Prime Pure et le Capping au 99ème percentile.*
 ---
 
 ### 📊 Insights Métier (EDA)
@@ -42,13 +47,15 @@ Voici un aperçu des transformations actuarielles appliquées :
 Le portefeuille est majoritairement composé de conducteurs d'âge moyen (**49% entre 35 et 55 ans**). Le volume des segments extrêmes (> 34 000 polices) permet néanmoins une modélisation robuste des comportements atypiques.
 
 > ![Repartition_AgeDriver](images/Repartition_AgeDriver.png)
-
+> *Légende : Répartition de l'âge d'assuré.*
 #### 2. Analyse de la Sinistralité
 * **La Courbe en "U" de l'âge** : Sur-sinistralité marquée chez les jeunes conducteurs (< 25 ans : **0,066**) et remontée chez les seniors (>= 75 ans : **0,044**).
 * **Le Paradoxe de la Densité** : Le risque culmine en zone de densité moyenne-haute (**19k-22k**) avec un pic à **0,10**, mais chute en zone d'ultra-densité (> 24k) en raison de la saturation du trafic (congestion).
 
 > ![Avg_Claim_AgeDriver](images/Avg_Claim_AgeDriver.png)
+ ---
 > ![Avg_Claim_Density](images/Avg_Claim_Density.png)
+ ---
 
 #### 3. Matrice de Corrélation
 * **Non-linéarité** : Les corrélations linéaires avec `ClaimNb` sont proches de zéro, justifiant l'utilisation d'algorithmes de **Gradient Boosting** et **Random Forest**.
@@ -68,9 +75,16 @@ Deux approches algorithmiques ont été comparées : le **Random Forest** (Baggi
 **✅ Verdict :** Le pipeline est prêt pour une intégration dans un moteur de tarification technique.
 
 > ![XGBoost_RandomForest_models](images/XGBoost_RandomForest_models.png)
+
 > ![Importance_variables_Random_Forest](images/Importance_variables_Random_Forest.png)
+
+*Légende : Importance des variables par Random Forest.*
+---
 > ![Importance_variables_XGBoost](images/Importance_variables_XGBoost.png)
 
+*Légende : Importance des variables par XGBoost.*
+---
+ 
 ### 🎯 Pourquoi avoir traité la Sévérité (ClaimAmount) ?
 Bien que ce modèle prédise la **Fréquence**, le traitement de la **Sévérité** est stratégique :
 
