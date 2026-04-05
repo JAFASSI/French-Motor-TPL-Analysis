@@ -29,7 +29,11 @@ Pour garantir la robustesse du modèle, plusieurs étapes de préparation métie
 > ![Pipeline Dataiku](images/Flow_Dataiku.png)
 > ![Boxplot_before_capping](images/Boxplot_before_capping.png)
 > ![Boxplot_after_capping](images/Boxplot_after_capping.png)
+> 
+Voici un aperçu des transformations actuarielles appliquées :
 
+> ![Detail_Prepare_Steps](images/Detail_Prepare_Steps.png)  
+*Légende : Imputation des zéros, calcul de la Prime Pure et logique de Capping au 99ème percentile.*
 ---
 
 ### 📊 Insights Métier (EDA)
