@@ -1,11 +1,11 @@
-Prédiction de la Fréquence de Sinistres Automobile    
-Projet d'Actuariat & Machine Learning sur Dataiku DSS    
-💡 Un export complet du projet Dataiku (.zip) est disponible dans le dossier /Export pour réimporter le flow.  
-Introduction :  
+**Prédiction de la Fréquence de Sinistres Automobile**  
+*Projet d'Actuariat & Machine Learning sur Dataiku DSS*   
+
+***Introduction :***  
 Objectif : Prédire la fréquence des sinistres pour optimiser la tarification d'un portefeuille d'assurances.  
 Dataset : 413 169 polices d'assurance (French Motor TPL).
 
-Data Engineering & Actuarial Adjustments : 
+***Data Engineering & Actuarial Adjustments :*** 
 
 Pour garantir la robustesse du modèle, plusieurs étapes de préparation "métier" ont été réalisées :
 
@@ -19,7 +19,7 @@ Visualisation du Pipeline :
 ![Boxplot_before_capping](images/Boxplot_before_capping.png)
 ![Boxplot_after_capping](images/Boxplot_after_capping.png)
 
-Insights Métier (EDA) :
+***Insights Métier (EDA) :***
 1. Structure du Portefeuille  
 Le portefeuille est majoritairement composé de conducteurs d'âge moyen (49% entre 35 et 55 ans). Le volume des segments extrêmes (plus de 34 000 polices cumulées) permet cependant une modélisation robuste des comportements atypiques.
 
@@ -38,7 +38,7 @@ Data Leakage : Les variables de montants ont été isolées pour éviter toute f
 
 ![Correlation](images/Correlation.png)
 
- Modélisation et Résultats  
+***Modélisation et Résultats :***  
 Modèles : Random Forest et XGBoost.  
 Performance : MAE de 0,076.  
 Feature Importance : La Densité et l'Âge du véhicule sont les facteurs dominants.  
@@ -49,7 +49,7 @@ Verdict : Le pipeline est prêt pour une intégration dans un moteur de tarifica
 ![Importance_variables_Random_Forest](images/Importance_variables_Random_Forest.png)
 ![Importance_variables_XGBoost](images/Importance_variables_XGBoost.png)
 
-Pourquoi avoir traité la Sévérité (ClaimAmount) ?  
+***Pourquoi avoir traité la Sévérité (ClaimAmount) ?***  
 Bien que ce modèle prédit la Fréquence, le traitement de la Sévérité est stratégique :  
 Tarification Globale : Le dataset est "Prêt à l'emploi" pour calculer la Prime Pure.  
 Contrôle KPI : La PurePremium_Capped sert d'indicateur de validation pour vérifier la rentabilité des segments prédits.  
