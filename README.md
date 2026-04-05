@@ -15,28 +15,28 @@ Capping (Écrêtage) au 99ème percentile (17187,18€) :
          Justification : Réduction de la variance (écart-type initial de 21612€ vs moyenne de 2239 €). Cette étape neutralise les sinistres exceptionnels (jusqu'à 2M€) qui agissent comme du bruit statistique.  
 Visualisation du Pipeline :
 
-![Flow_Dataiku](Flow_Dataiku.png)
-![Boxplot_before_capping](Boxplot_before_capping.png)
-![Boxplot_after_capping](Boxplot_after_capping.png)
+![Flow_Dataiku](images/Flow_Dataiku.png)
+![Boxplot_before_capping](images/Boxplot_before_capping.png)
+![Boxplot_after_capping](images/Boxplot_after_capping.png)
 
 Insights Métier (EDA) :
 1. Structure du Portefeuille  
 Le portefeuille est majoritairement composé de conducteurs d'âge moyen (49% entre 35 et 55 ans). Le volume des segments extrêmes (plus de 34 000 polices cumulées) permet cependant une modélisation robuste des comportements atypiques.
 
-![Repartition_AgeDriver](Repartition_AgeDriver.png)
+![Repartition_AgeDriver](images/Repartition_AgeDriver.png)
 
 3. Analyse de la Sinistralité 
 La Courbe en "U" de l'âge : Sur-sinistralité marquée chez les jeunes conducteurs (< 25 ans : 0,066) et remontée chez les seniors (>= 75 ans : 0,044).  
 Le Paradoxe de la Densité : Le risque culmine en zone de densité moyenne-haute (19k-22k) avec un pic à 0,10, mais chute en zone d'ultra-densité (> 24k) à cause de la saturation du trafic (congestion).
 
-![Avg_Claim_AgeDriver](Avg_Claim_AgeDriver.png)
-![Avg_Claim_Density](Avg_Claim_Density.png)
+![Avg_Claim_AgeDriver](images/Avg_Claim_AgeDriver.png)
+![Avg_Claim_Density](images/Avg_Claim_Density.png)
 
 3. Matrice de Corrélation  
 Non-linéarité : Les corrélations linéaires avec ClaimNb sont proches de zéro, justifiant l'utilisation d'algorithmes de Gradient Boosting et Random Forest.  
 Data Leakage : Les variables de montants ont été isolées pour éviter toute fuite de données lors de l'entraînement.
 
-![Correlation](Correlation.png)
+![Correlation](images/Correlation.png)
 
  Modélisation et Résultats  
 Modèles : Random Forest et XGBoost.  
@@ -45,9 +45,9 @@ Feature Importance : La Densité et l'Âge du véhicule sont les facteurs domina
 Deux approches algorithmiques ont été comparées : le Random Forest (Bagging) pour sa stabilité, et le XGBoost (Boosting) pour sa capacité à capturer des signaux complexes. La convergence des deux modèles vers une MAE de 0,076 valide la qualité du Feature Engineering.  
 Verdict : Le pipeline est prêt pour une intégration dans un moteur de tarification technique.
 
-![XGBoost_RandomForest_models](XGBoost_RandomForest_models.png)
-![Importance_variables_Random_Forest](Importance_variables_Random_Forest.png)
-![Importance_variables_XGBoost](Importance_variables_XGBoost.png)
+![XGBoost_RandomForest_models](images/XGBoost_RandomForest_models.png)
+![Importance_variables_Random_Forest](images/Importance_variables_Random_Forest.png)
+![Importance_variables_XGBoost](images/Importance_variables_XGBoost.png)
 
 Pourquoi avoir traité la Sévérité (ClaimAmount) ?  
 Bien que ce modèle prédit la Fréquence, le traitement de la Sévérité est stratégique :  
