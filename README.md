@@ -21,6 +21,9 @@ Pour garantir la robustesse du modèle, plusieurs étapes de préparation métie
 * **Capping (Écrêtage) au 99ème percentile (17 187,18 €)** :
     * *Justification* : Réduction drastique de la variance (écart-type initial de 21 612 € vs moyenne de 2 239 €). 
     * *Impact* : Neutralisation des sinistres exceptionnels (jusqu'à 2M€) qui agissent comme du bruit statistique.
+* **Calcul de la Prime Pure (`PurePremium_Capped`)** : 
+    * *Formule* : `ClaimAmount_Capped / Exposure`
+    * *Objectif* : Cette variable normalise le coût du risque par rapport à la durée de présence au contrat. Elle permet de comparer sur une base annuelle un contrat de 15 jours avec un contrat de 12 mois, créant ainsi une cible de tarification homogène.
 > **Visualisation du Pipeline :**
 
 > ![Pipeline Dataiku](images/Flow_Dataiku.png)
